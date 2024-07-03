@@ -1,0 +1,39 @@
+.card {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    list-style:none;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-image {
+    object-fit: cover;
+    width: 200px;
+}
+
+.card-title, .card-price {
+    text-align: center;
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+.card-button {
+    border-radius: 8px;
+    border: none;
+    background-color: #fff;
+    color: #222;
+}
+
+.card-button:hover {
+    background-color: #4986f8;
+}
