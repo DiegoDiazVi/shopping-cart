@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import './Filters.css'
 
 function Filters({filters, handlerChangeInput, handlerSelectCategory}) {
     const idPrice = useId();
@@ -11,15 +12,15 @@ function Filters({filters, handlerChangeInput, handlerSelectCategory}) {
         handlerSelectCategory(evt.target.value)
     }
     return (
-        <>
+        <div className='filters'>
             <section>
-                <label htmlFor={idPrice}>Precio</label>
-                <input id={idPrice} type="range" min='0' max='2000' onChange={handlerSetPrice} />
-                <span>$ {filters.minPrice}</span>
-                </section>
-                <section>
-                <label htmlFor={idCategory}>Categoria</label>
-                <select name='category' id={idCategory} defaultValue={'all'} onChange={handlerSetCategory}>
+                <label className='input-label' htmlFor={idPrice}>Precio</label>
+                <input className='input' id={idPrice} type="range" min='0' max='2000' onChange={handlerSetPrice} />
+                <span className='input-price'>$ {filters.minPrice}</span>
+            </section>
+            <section>
+                <label className='select-label'  htmlFor={idCategory}>Categoria</label>
+                <select className='select'name='category' id={idCategory} defaultValue={'all'} onChange={handlerSetCategory}>
                     <option value='all'>Todos</option>
                     <option value='beauty'>Belleza</option>
                     <option value='fragrances'>Fragancias</option>
@@ -27,7 +28,7 @@ function Filters({filters, handlerChangeInput, handlerSelectCategory}) {
                     <option value='groceries'>Comida</option>
             </select>
         </section>
-        </>
+        </div>
     );
 }
 
