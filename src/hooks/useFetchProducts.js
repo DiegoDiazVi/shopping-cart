@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react"
 
-function useFetchProducts() {
-    const [data, setData] = useState(null)
-    const [loading, setLoading] = useState(false)
+function useFetchProducts(url) {
+    const [products, setProducts] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
-        fetch('https://dummyjson.com/products')
-        .then(res => {
-            setLoading(true)
-            return res.json()
+        fetch(url)
+        .then(res => res.json())
+        .then(json => {
+            setIsLoading(false)
+            return setProducts(json)
         })
-        .then(json => setData(json))
         .catch(error => console.error(error))
-        .finally(() => setLoading(false))
-    }, [])
+    }, [url])
 
-    return { data, loading }
+    return { products, isLoading }
 }
 
 export { useFetchProducts }
