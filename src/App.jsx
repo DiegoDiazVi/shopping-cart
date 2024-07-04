@@ -2,13 +2,11 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import { Card } from './components/Card';
 import { useFetchProducts } from './hooks/useFetchProducts'
+import { useFilters } from './hooks/useFilters';
 
 function App() {
   const { products, isLoading } = useFetchProducts('https://dummyjson.com/products');
-  const [ filters, setFilters] = useState({
-    category: 'all',
-    minPrice: 0
-  })
+  const { filters, setFilters } = useFilters()
   const [ filterProducts, setFilteredProducts ] = useState(products.products)
 
   useEffect(() => {
@@ -17,7 +15,7 @@ function App() {
 
   useEffect(() => {
     handlerFilterProducts(products)
-  }, [filters])
+  }, [ filters, products ])
 
   const handlerChangeInput = (value) => {
     setFilters(prevState => {
@@ -43,7 +41,7 @@ function App() {
     })
     setFilteredProducts(filterProducts)
   }
-
+  console.log(filters)
   return (
     <main className='container'>
       <Header filters={filters} handlerChangeInput={handlerChangeInput} handlerSelectCategory={handlerSelectCategory} />
