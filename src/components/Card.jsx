@@ -3,7 +3,7 @@ import './Card.css'
 function Card({data, loading}) {
     return (
         <ul className='card'>
-            {loading ? <p>Cargando...</p> : data?.products?.map((product) => {
+            {loading ? <p>Cargando...</p> : data?.map((product) => {
             return (
                 <li className='card-list' key={product.id}>
                     <p className='card-title'>{product.title}</p>
