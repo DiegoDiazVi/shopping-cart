@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import { Card } from './components/Card';
 import { useFetchProducts } from './hooks/useFetchProducts'
@@ -9,6 +9,15 @@ function App() {
     category: 'all',
     minPrice: 0
   })
+  const [ filterProducts, setFilteredProducts ] = useState(products.products)
+
+  useEffect(() => {
+    setFilteredProducts(products.products)
+  }, [products])
+
+  useEffect(() => {
+    handlerFilterProducts(products)
+  }, [filters])
 
   const handlerChangeInput = (value) => {
     setFilters(prevState => {
@@ -28,10 +37,17 @@ function App() {
     })
   }
 
+  const handlerFilterProducts = (products) => {
+    const filterProducts = products.products?.filter( product => {
+      return (filters.category === 'all' || product.category === filters.category) && product.price >= filters.minPrice
+    })
+    setFilteredProducts(filterProducts)
+  }
+
   return (
     <main className='container'>
       <Header filters={filters} handlerChangeInput={handlerChangeInput} handlerSelectCategory={handlerSelectCategory} />
-      <Card data={products} loading={isLoading}/>
+      <Card data={filterProducts} loading={isLoading}/>
     </main>
   )
 }
