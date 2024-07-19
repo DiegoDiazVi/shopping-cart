@@ -10,10 +10,6 @@ function App() {
   const [ filterProducts, setFilteredProducts ] = useState(products.products)
 
   useEffect(() => {
-    setFilteredProducts(products.products)
-  }, [products])
-
-  useEffect(() => {
     handlerFilterProducts(products)
   }, [ filters, products ])
 
