@@ -1,13 +1,16 @@
+import { useContext } from 'react'
+import { FilterContext } from '../context/FiltersContext'
 import './Card.css'
 
-function Card({data, loading}) {
+function Card() {
+    const { filterProducts, isLoading } = useContext(FilterContext)
     return (
         <ul className='card'>
-            {loading ? <p>Cargando...</p> : data?.map((product) => {
+            {isLoading ? <p>Cargando...</p> : filterProducts?.map((product) => {
             return (
                 <li className='card-list' key={product.id}>
                     <p className='card-title'>{product.title}</p>
-                    <img className='card-image' src={product.images} alt={product.description} />
+                    <img className='card-image' src={product.thumbnail} alt={product.description} />
                     <p className='card-price'>${product.price}</p>
                     <button className='card-button'> Add to cart 🛒 </button>
                 </li>
