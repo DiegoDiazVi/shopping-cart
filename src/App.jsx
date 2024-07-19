@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     handlerFilterProducts(products)
-  }, [ filters, products ])
+  }, [ filters ])
 
   const handlerChangeInput = (value) => {
     setFilters(prevState => {
@@ -37,7 +37,7 @@ function App() {
     })
     setFilteredProducts(filterProducts)
   }
-  console.log(filters)
+
   return (
     <main className='container'>
       <Header filters={filters} handlerChangeInput={handlerChangeInput} handlerSelectCategory={handlerSelectCategory} />
