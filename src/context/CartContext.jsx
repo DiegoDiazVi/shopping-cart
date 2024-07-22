@@ -11,7 +11,7 @@ function CartProvider({ children }) {
         if (productInCartIndex >= 0) {
             const newCart = structuredClone(cart);
             newCart[productInCartIndex].quantity += 1
-            return setCart([...cart, newCart])
+            return setCart(newCart)
         }
         return setCart([
             ...cart,
