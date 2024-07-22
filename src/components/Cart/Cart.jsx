@@ -1,13 +1,14 @@
 import { useId } from "react";
 import './Cart.css'
+import { useCart } from "../../hooks/useCart";
 
-function listCart({ image, description, productName, price, quantity }) {
+function ListCart ({ thumbnail, title, price, quantity }) {
     return(
         <>
             <li>
-                <img src={image} alt={description} />
+                <img src={thumbnail} alt={title} />
                 <div>
-                    <strong>{productName}</strong> - ${price}
+                    <strong>{title}</strong> - ${price}
                 </div>
 
                 <footer>
@@ -22,6 +23,7 @@ function listCart({ image, description, productName, price, quantity }) {
 }
 
 function Cart() {
+    const { cart, clearCart } = useCart()
     const cartCheckboxId = useId();
     return (
     <>
@@ -32,10 +34,14 @@ function Cart() {
 
         <aside className='cart'>
             <ul>
-                <listCart />
+                {cart.map(item => {
+                    return(
+                        <ListCart key={item.id} {...item}/>
+                    )
+                })}
             </ul>
 
-            <button>🗑️</button>
+            <button onClick={clearCart}>🗑️</button>
         </aside>
     </>
     );
