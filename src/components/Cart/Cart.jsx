@@ -1,6 +1,26 @@
 import { useId } from "react";
 import './Cart.css'
 
+function listCart({ image, description, productName, price, quantity }) {
+    return(
+        <>
+            <li>
+                <img src={image} alt={description} />
+                <div>
+                    <strong>{productName}</strong> - ${price}
+                </div>
+
+                <footer>
+                    <small>
+                        Qty: {quantity}
+                    </small>
+                    <button>+</button>
+                </footer>
+            </li>
+        </>
+    )
+}
+
 function Cart() {
     const cartCheckboxId = useId();
     return (
@@ -12,19 +32,7 @@ function Cart() {
 
         <aside className='cart'>
             <ul>
-                <li>
-                    <img src="https://cdn.dummyjson.com/products/images/groceries/Cat%20Food/thumbnail.png" alt="wiskas" />
-                </li>
-                <div>
-                    <strong>Wiskas</strong> - $9.99
-                </div>
-
-                <footer>
-                    <small>
-                        Qty: 1
-                    </small>
-                    <button>+</button>
-                </footer>
+                <listCart />
             </ul>
 
             <button>🗑️</button>
