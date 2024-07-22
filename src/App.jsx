@@ -10,9 +10,9 @@ function App() {
         <FiltersProvider>
           <Header />
           <CartProvider>
-            <Cart />
+            <Card />
+            <Cart/>
           </CartProvider>
-          <Card />
         </FiltersProvider>
       </main>
     )
