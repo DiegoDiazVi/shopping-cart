@@ -1,4 +1,4 @@
-import Filters from "./Filters";
+import Filters from "../Filters/Filters.jsx";
 import './Header.css'
 
 function Header() {

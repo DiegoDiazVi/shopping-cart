@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import './Filters.css'
 import { useContext } from 'react';
-import { FilterContext } from '../context/FiltersContext';
+import { FilterContext } from '../../context/FiltersContext';
 
 function Filters() {
     const { filters, handlerChangeInput, handlerSelectCategory } = useContext(FilterContext);

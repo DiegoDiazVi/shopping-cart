@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { FilterContext } from '../context/FiltersContext'
+import { FilterContext } from '../../context/FiltersContext.jsx'
 import './Card.css'
 
 function Card() {
