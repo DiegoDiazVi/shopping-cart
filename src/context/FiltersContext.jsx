@@ -29,7 +29,7 @@ function FiltersProvider({ children }) {
 
     useEffect(() => {
         handlerFilterProducts(products)
-    }, [ filters ])
+    }, [ filters, products ])
 
     const handlerFilterProducts = (products) => {
     const filterProducts = products.products?.filter( product => {
